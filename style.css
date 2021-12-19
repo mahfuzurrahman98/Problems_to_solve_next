@@ -1,0 +1,36 @@
+body {
+	background-color: white;
+}
+
+nav {
+	background-color: #131921;
+	color: #f3a847;
+	text-align: center;
+	font-size: 1.4rem;
+	padding: 5px;
+}
+
+#main {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+li {
+	margin-left: -25px;
+	font-size: 1rem;
+}
+
+#ul_list {
+	margin-top: 30px;
+}
+
+#clr {
+	padding: 0px;
+	border: none;
+	background: white;
+}
+
+#dlt-btn {
+	height: 30px;
+	width: 30px;
+}

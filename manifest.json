@@ -1,0 +1,29 @@
+{
+	"manifest_version": 3,
+	"name": "Amazon's Link Collector",
+	"description": "an extenstion to collect product links from amazon",
+	"version": "1.0",
+	"action": {
+		"default_popup": "popup.html",
+		"default_title": "Amazon Listed Links v1.0",
+		"default_icon": {
+			"16": "icon.png"
+		}
+	},
+	"icons": {
+		"16": "icon.png",
+		"32": "icon.png",
+		"48": "icon.png",
+		"128": "icon.png"
+	},
+	"permissions": ["storage"],
+	"content_scripts": [
+		{
+			"matches": ["https://www.amazon.com/*"],
+			"js": ["content.js"]
+		}
+	],
+	"background": {
+		"service_worker": "background.js"
+	}
+}
