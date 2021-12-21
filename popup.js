@@ -1,47 +1,46 @@
 const ul = document.getElementById("ul_list");
 
 document.addEventListener("DOMContentLoaded", () => {
-	document.getElementById("clr").addEventListener("click", () => {
-		document.getElementById(
-			"main"
-		).innerHTML = `<p style="color:red;font-size:1rem;">All_the_links_are_cleared</p>`;
-		chrome.storage.sync.set({ links: ["No_links_are_stored"] });
-	});
-
-	chrome.storage.sync.get(["links"], function (res) {
-		if (!res.links) {
-			document.getElementById(
-				"main"
-			).innerHTML = `<p style="color:red;font-size:1rem">No_links_are_stored</p>`;
-			chrome.storage.sync.set({ links: ["No_links_are_stored"] });
-		} else {
+	const showProblems = () => {
+		chrome.storage.sync.get(["links"], function (res) {
 			let n = res.links.length;
-			if (n == 1) {
-				document.getElementById(
-					"main"
-				).innerHTML = `<p style="color:red;font-size:1rem">No_links_are_stored</p>`;
-				chrome.storage.sync.set({ links: ["No_links_are_stored"] });
-			} else {
-				document.getElementById("clr").classList.remove("d-none");
-				printDash = false;
-				for (let i = 1; i < n; i++) {
-					const e = res.links[i];
-					const li = document.createElement("li");
-					const sp = document.createElement("div");
+			for (let i = 0; i < n; i++) {
+				const problemList = document.getElementById("problems");
+				const div = document.createElement("div");
 
-					if ((i - 1) % 10 == 0) {
-						if (printDash) {
-							sp.style.color = "orange";
-							sp.innerHTML = "----------------------------------";
-							ul.append(sp);
-						}
-						printDash = true;
-					}
+				const tit = res.links[i].title;
+				const url = res.links[i].url;
 
-					li.textContent = e;
-					ul.append(li);
-				}
+				div.classList.add(
+					"shadow",
+					"shadow-lg",
+					"bg-light",
+					"rounded",
+					"p-2",
+					"m-2"
+				);
+				div.innerHTML = `
+					<span class="p-1 me-1" id="p${i}" style="cursor: pointer" onclick="removeProblem(${i})">
+						<img src="./solved.png" width="18" height="18" alt="solved">
+					</span>
+					<span>
+						<a href="${url}" target="blank">${tit}</a>
+					</span>
+				`;
+
+				problemList.append(div);
 			}
-		}
-	});
+		});
+	};
+	showProblems();
+
+	const removeProblem = (i) => {
+		chrome.storage.sync.get(["links"], function (res) {
+			let p_arr = res.links;
+			let target = p_arr[i];
+			p_arr = p_arr.filter((e) => e.title !== target);
+			chrome.storage.sync.set({ links: p_arr });
+			showProblems();
+		});
+	};
 });
