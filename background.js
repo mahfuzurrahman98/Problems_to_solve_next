@@ -1,3 +1,6 @@
+// Greetings from Mahfuz!
+// All Copyright Reserved © (2021- ) Md Mahfuzur Rahman Arif
+
 chrome.runtime.onInstalled.addListener(() => {
 	chrome.storage.sync.set({ links: [] });
 	const ojs = [
@@ -24,7 +27,7 @@ chrome.runtime.onInstalled.addListener(() => {
 	];
 	let contextMenu = {
 		id: "ext",
-		title: "< Solve / later >",
+		title: "<Solve later/>",
 		contexts: ["page"],
 		documentUrlPatterns: ojs,
 	};

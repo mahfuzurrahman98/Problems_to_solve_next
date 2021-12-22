@@ -1,3 +1,6 @@
+// Greetings from Mahfuz!
+// All Copyright Reserved © (2021- ) Md Mahfuzur Rahman Arif
+
 document.addEventListener("DOMContentLoaded", () => {
 	const showProblems = () => {
 		chrome.storage.sync.get(["links"], function (res) {

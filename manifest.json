@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Problems To Solve Next",
-	"description": "an extenstion to store links of online judges problems",
+	"description": "an extenstion to store links of online judge problems",
 	"version": "1.0",
 	"action": {
 		"default_popup": "popup.html",
