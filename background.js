@@ -1,6 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
 	chrome.storage.sync.set({ links: [] });
-	console.log("Hello from background");
 	const ojs = [
 		"*://*.codeforces.com/*",
 		"*://*.codechef.com/*",
@@ -41,11 +40,9 @@ chrome.contextMenus.onClicked.addListener(() => {
 		(tabs) => {
 			const title = tabs[0].title;
 			const url = tabs[0].url;
-			console.log(title);
 
 			chrome.storage.sync.get(["links"], function (res) {
 				let links_arr = res.links;
-				// console.log(links_arr);
 				if (links_arr.length == 0) {
 					links_arr.push({ title: title, url: url });
 				} else {
@@ -53,7 +50,7 @@ chrome.contextMenus.onClicked.addListener(() => {
 					if (indx == -1) {
 						links_arr.push({ title: title, url: url });
 					} else {
-						console.log("ache");
+						// console.log("ache");
 					}
 				}
 				chrome.storage.sync.set({ links: links_arr });
