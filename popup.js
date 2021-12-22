@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			let n = res.links.length;
 			if (n == 0) {
 				const p = document.createElement("p");
-				p.textContent = "No problems to solve";
+				p.textContent = "!(problems to solve)";
 				p.classList.add("text-white", "text-center", "mt-2");
 				problemList.append(p);
 				return;
